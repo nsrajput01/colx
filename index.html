@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColX - Enhanced College Student Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-blue: #00f5ff;
+            --neon-purple: #bf00ff;
+            --neon-pink: #ff0080;
+            --neon-green: #00ff41;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', monospace;
+        }
+
+        .neon-glow {
+            text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+        }
+
+        .cyber-border {
+            border: 1px solid var(--neon-blue);
+            background: rgba(27,9,32,255);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        .pulse-neon {
+            animation: pulse-neon 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-neon {
+            from { box-shadow: 0 0 10px var(--neon-blue); }
+            to { box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); }
+        }
+
+        .hover-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .neon-button {
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 12px 24px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .neon-button:hover {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .neon-button:hover::before {
+            left: 100%;
+        }
+
+        .cyber-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .cyber-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+        }
+
+        .section-hidden {
+            display: none;
+        }
+
+        .cyber-input {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-input:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+
+        .cyber-select {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-select:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+
+        .cyber-select option {
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .vote-button {
+            background: transparent;
+            border: 1px solid var(--neon-purple);
+            color: var(--neon-purple);
+            padding: 8px 16px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .vote-button:hover {
+            background: var(--neon-purple);
+            color: var(--dark-bg);
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .vote-button.voted {
+            background: var(--neon-purple);
+            color: var(--dark-bg);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 245, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--neon-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            background: rgba(26, 26, 26, 0.9);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            color: var(--neon-green);
+            z-index: 1000;
+            transform: translateX(150%);
+            transition: transform 0.8s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+        } 
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-label:hover {
+            background: var(--neon-purple);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-size: 12px;
+            border-radius: 2px;
+            margin: 2px;
+        }
+
+        .branch-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .branch-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid rgba(0, 245, 255, 0.3);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .branch-card:hover,
+        .branch-card.selected {
+            border-color: var(--neon-blue);
+            background: rgba(0, 245, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+        }
+
+        .year-selector {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .year-btn {
+            background: transparent;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+            padding: 10px 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .year-btn:hover,
+        .year-btn.selected {
+            background: var(--neon-purple);
+            color: var(--dark-bg);
+            box-shadow: 0 0 15px var(--neon-purple);
+        }
+
+        .profile-badge {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--dark-bg);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .auth-mode-toggle {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 245, 255, 0.3);
+        }
+
+        .auth-mode-toggle button {
+            background: none;
+            border: none;
+            color: var(--neon-blue);
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .profile-locked {
+            color: var(--text-secondary);
+            background: rgba(26, 26, 26, 0.5);
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            #bottomNav {
+                display: flex;
+            }
+            .bgbtm{
+                background: var(--card-bg);
+            }
+            .desktop-nav, .mobile-nav {
+                /* display: none !important;*/
+            }
+        }
+        @media (min-width: 769px) {
+            #bottomNav{
+                display: none !important;
+            }
+            .bottom-nav-link {
+                color: var(--text-secondary);
+                text-decoration: none;
+                flex: 1;
+                transition: color 0.2s;
+            }
+            .bottom-nav-link.active,
+            .bottom-nav-link:hover {
+                color: var(--neon-blue);
+            }
+            #bottomNav{
+                display: none;
+            }   
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Notification Container -->
+    <div id="notification" class="notification"></div>
+    
+    <!-- Login Section -->
+    <div id="loginSection" class="min-h-screen flex items-center justify-center px-4">
+        <div class="cyber-card p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold orbitron neon-glow glitch" style="color: var(--neon-blue);">ColX</h1>
+                <p class="text-lg mt-2 text-gray-400">Enhanced College Student Hub</p>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="loginEmail" class="cyber-input w-full rounded" placeholder="Enter your email">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" id="loginPassword" class="cyber-input w-full rounded" placeholder="Enter your password">
+                </div>
+                
+                <button id="loginBtn" class="neon-button w-full rounded">
+                    <span id="loginBtnText">Login</span>
+                    <div id="loginLoader" class="loading hidden ml-2"></div>
+                </button>
+
+                <div class="auth-mode-toggle">
+                    <p class="text-gray-400">Don't have an account?</p>
+                    <button id="showSignupBtn" class="text-neon-blue">Sign up here</button>
+                </div>
+            </div>
+
+            <div id="signupForm" class="space-y-6 hidden">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Full Name</label>
+                    <input type="text" id="signupName" class="cyber-input w-full rounded" placeholder="Enter your full name">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="signupEmail" class="cyber-input w-full rounded" placeholder="Enter your email">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" id="signupPassword" class="cyber-input w-full rounded" placeholder="Enter your password">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Branch</label>
+                    <select id="signupBranch" class="cyber-select w-full rounded">
+                        <option value="">Select your branch</option>
+                        <option value="CSE">Computer Science Engineering</option>
+                        <option value="ECE">Electronics & Communication</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="EE">Electrical Engineering</option>
+                        <option value="CE">Civil Engineering</option>
+                        <option value="IT">Information Technology</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Academic Year</label>
+                    <select id="signupYear" class="cyber-select w-full rounded">
+                        <option value="">Select your year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                    </select>
+                </div>
+                
+                <button id="signupBtn" class="neon-button w-full rounded" style="border-color: var(--neon-purple); color: var(--neon-purple);">
+                    <span id="signupBtnText">Create Account</span>
+                    <div id="signupLoader" class="loading hidden ml-2"></div>
+                </button>
+
+                <div class="auth-mode-toggle">
+                    <p class="text-gray-400">Already have an account?</p>
+                    <button id="showLoginBtn" class="text-neon-blue">Login here</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="section-hidden">
+        <!-- Header -->
+        <header class="cyber-border p-4 sticky top-0 z-50 backdrop-blur-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold orbitron neon-glow" style="color: var(--neon-blue);">ColX</h1>
+                    <div class="hidden md:flex items-center space-x-2">
+                        <span id="userEmail" class="text-sm text-gray-400"></span>
+                        <span id="userProfile" class="profile-badge"></span>
+                    </div>
+                </div>
+                
+                <nav class="desktop-nav hidden md:flex space-x-8">
+                    <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
+                    <a href="#" class="nav-link" data-section="notes">Notes</a>
+                    <a href="#" class="nav-link" data-section="news">Notice</a>
+                    <a href="#" class="nav-link" data-section="suggestions">Requests</a>
+                    <a href="#" class="nav-link" data-section="profile">Profile</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="logoutBtn" class="text-red-400 hover:text-red-300 transition-colors">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>                  
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboardSection" class="container mx-auto px-4 py-8">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-blue);">Dashboard</h2>
+                <p class="text-gray-400 mb-6">Welcome to your personalized ColX experience</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Profile Card -->
+                <div class="cyber-card p-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-user-graduate mr-3" style="color: var(--neon-blue);"></i>
+                        Your Profile
+                    </h3>
+                    <div id="dashboardProfile" class="space-y-2 text-gray-300">
+                        <!-- Profile info will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="cyber-card p-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-chart-bar mr-3" style="color: var(--neon-green);"></i>
+                        Quick Stats
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span>My Requests:</span>
+                            <span id="userRequestsCount" class="text-neon-blue">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Notes Available:</span>
+                            <span id="availableNotesCount" class="text-neon-green">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Recent News:</span>
+                            <span id="recentNewsCount" class="text-neon-purple">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="cyber-card p-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-bolt mr-3" style="color: var(--neon-pink);"></i>
+                        Quick Actions
+                    </h3>
+                    <div class="space-y-3">
+                        <button class="neon-button w-full text-sm py-2" onclick="showSection('notes')">
+                            Access My Notes
+                        </button>
+                        <button class="neon-button w-full text-sm py-2" style="border-color: var(--neon-purple); color: var(--neon-purple);" onclick="showSection('suggestions')">
+                            Submit Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="cyber-card p-6">
+                <h3 class="text-xl font-bold mb-4">Recent Activity</h3>
+                <div id="recentActivity" class="space-y-4">
+                    <!-- Recent activity will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="newsSection" class="container mx-auto px-4 py-8 section-hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-purple);">Notice</h2>
+                <p class="text-gray-400 mb-6">Stay updated with verified information about your college</p>
+                <!-- News Upload Form (hidden by default, shown for admin) -->
+                <div id="newsUploadForm" class="cyber-card p-6 mb-6 hidden">
+                    <h3 class="text-xl font-bold mb-4">Post News</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="newsTitle" class="cyber-input w-full rounded" placeholder="Notice title">
+                        <input type="text" id="newsCategory" class="cyber-input w-full rounded" placeholder="Category (optional)">
+                        <select id="newsBranch" class="cyber-select w-full rounded">
+                            <option value="ALL">All Branches</option>
+                            <option value="CSE">Computer Science</option>
+                            <option value="ECE">Electronics</option>
+                            <option value="ME">Mechanical</option>
+                            <option value="EE">Electrical</option>
+                            <option value="CE">Civil</option>
+                            <option value="IT">Information Technology</option>
+                        </select>
+                        <select id="newsYear" class="cyber-select w-full rounded">
+                            <option value="ALL">All Years</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                        <textarea id="newsContent" class="cyber-input w-full h-24 rounded" placeholder="Notice content"></textarea>
+                        <button id="postNewsBtn" class="neon-button">Post</button>
+                    </div>
+                </div>
+            </div>
+            <div id="newsList" class="space-y-6">
+                <!-- News will be populated here -->
+            </div>
+        </section>
+
+        <!-- Notes Section -->
+        <section id="notesSection" class="container mx-auto px-4 py-8 section-hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-green);">Study Notes</h2>
+                <p class="text-gray-400 mb-6">Access study materials for your branch and year</p>
+            </div>
+            
+            <!-- Auto-loaded content based on user profile -->
+            <div id="notesContent">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold">Your Notes</h3>
+                        <p id="notesFilter" class="text-gray-400"></p>
+                    </div>
+                    <div class="flex gap-4">
+                        <a id="driveLink" href="#" target="_blank" class="neon-button" style="text-decoration:none;">
+                            <i class="fab fa-google-drive mr-2"></i>Google Drive
+                        </a>
+                        <button id="uploadNoteBtn" class="neon-button" style="border-color: var(--neon-purple); color: var(--neon-purple);">
+                            <i class="fas fa-upload mr-2"></i>Upload Note
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="notesList" class="space-y-4">
+                    <!-- Notes will be populated here -->
+                </div>
+            </div>
+            
+            <!-- Upload Note Modal -->
+            <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="cyber-card p-6 w-full max-w-md mx-4">
+                    <h3 class="text-xl font-bold mb-4">Upload Note</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="noteTitle" class="cyber-input w-full rounded" placeholder="Note title">
+                        <input type="text" id="noteSubject" class="cyber-input w-full rounded" placeholder="Subject">
+                        <textarea id="noteDescription" class="cyber-input w-full h-24 rounded" placeholder="Description"></textarea>
+                        <div class="file-upload">
+                            <input type="file" id="noteFile" accept=".pdf,.doc,.docx,.txt">
+                            <label for="noteFile" class="file-upload-label">Choose File</label>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <button id="cancelUpload" class="px-4 py-2 text-gray-400 hover:text-white">Cancel</button>
+                            <button id="submitNote" class="neon-button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suggestions Section -->
+        <section id="suggestionsSection" class="container mx-auto px-4 py-8 section-hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-pink);">Request Box</h2>
+                <p class="text-gray-400 mb-6">Share your request with your branch and year peers</p>
+                
+                <!-- Filter Info -->
+                <div class="cyber-card p-4 mb-6" style="border-color: var(--neon-pink);">
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-filter mr-3" style="color: var(--neon-pink);"></i>
+                        <span>Showing requests from: </span>
+                        <span id="suggestionFilter" class="font-bold ml-2" style="color: var(--neon-pink);"></span>
+                    </div>
+                </div>
+                
+                <div class="cyber-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Submit a Request</h3>
+                    <div class="space-y-4">
+                        <input type="text" id="suggestionTitle" class="cyber-input w-full rounded" placeholder="Request title">
+                        <select id="suggestionCategory" class="cyber-select w-full rounded">
+                            <option value="general">General</option>
+                            <option value="academic">Academic</option>
+                            <option value="infrastructure">Infrastructure</option>
+                            <option value="events">Events</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <textarea id="suggestionText" class="cyber-input w-full h-32 rounded" placeholder="Describe your request..."></textarea>
+                        <button id="postSuggestionBtn" class="neon-button">Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="suggestionsList" class="space-y-6">
+                <!-- Suggestions will be populated here -->
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profileSection" class="container mx-auto px-4 py-8 section-hidden">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-green);">Profile</h2>
+                <p class="text-gray-400 mb-6">Manage your account and preferences</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Profile Information -->
+                <div class="cyber-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Profile Information</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Full Name</label>
+                            <input type="text" id="profileName" class="cyber-input w-full rounded" readonly="">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" id="profileEmail" class="cyber-input w-full rounded" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Branch <span class="text-xs text-gray-500">(Cannot be changed)</span></label>
+                            <select id="profileBranch" class="cyber-select w-full rounded profile-locked" disabled>
+                                <option value="CSE">Computer Science Engineering</option>
+                                <option value="ECE">Electronics & Communication</option>
+                                <option value="ME">Mechanical Engineering</option>
+                                <option value="EE">Electrical Engineering</option>
+                                <option value="CE">Civil Engineering</option>
+                                <option value="IT">Information Technology</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Academic Year <span class="text-xs text-gray-500"></span></label>
+                            <select id="profileYear" class="cyber-select w-full rounded profile-locked" >
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                        </div>
+                        <button id="updateProfileBtn" class="neon-button">Update Profile</button>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+            <a href="https://nsrajput0.github.io/Colx/" target="_blank" class="neon-button" style="border-color: var(--neon-green); color: var(--neon-green);">
+                Visit Our Website
+            </a>
+        </div>
+
+                <!-- Account Statistics -->
+                <div class="cyber-card p-6">
+                    <h3 class="text-xl font-bold mb-4">Account Statistics</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-black bg-opacity-30 rounded">
+                            <span>Member Since:</span>
+                            <span id="memberSince" class="text-neon-blue"></span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-black bg-opacity-30 rounded">
+                            <span>Requests Submitted:</span>
+                            <span id="totalRequests" class="text-neon-purple"></span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-black bg-opacity-30 rounded">
+                            <span>Notes Uploaded:</span>
+                            <span id="totalNotesUploaded" class="text-neon-green"></span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-black bg-opacity-30 rounded">
+                            <span>Helpful Votes:</span>
+                            <span id="totalVotes" class="text-neon-pink"></span>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+            <div class="mt-8 text-center">
+            <a href="https://nsrajput0.github.io/Colx/" target="_blank" class="neon-button" style="border-color: var(--neon-green); color: var(--neon-green);">
+                Visit Our Website
+            </a>
+        </div>
+        </section>
+    </div>
+
+    <nav id="bottomNav" class="fixed bottom-0 left-0 w-full bgbtm bg-opacity-90 border-t border-gray-800 flex justify-around items-center py-2 z-50 md:hidden">
+        <a href="#" class="bottom-nav-link flex flex-col items-center active" data-section="dashboard">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs mt-1">Home</span>
+        </a>
+        <a href="#" class="bottom-nav-link flex flex-col items-center" data-section="notes">
+            <i class="fas fa-book text-xl"></i>
+            <span class="text-xs mt-1">Notes</span>
+        </a>
+        <a href="#" class="bottom-nav-link flex flex-col items-center" data-section="news">
+            <i class="fas fa-exclamation-triangle text-xl"></i>
+            <span class="text-xs mt-1">Notice</span>
+        </a>
+        <a href="#" class="bottom-nav-link flex flex-col items-center" data-section="suggestions">
+            <i class="fas fa-share-from-square text-xl"></i>
+            <span class="text-xs mt-1">Requests</span>
+        </a>
+        <a href="#" class="bottom-nav-link flex flex-col items-center" data-section="profile">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js';
+        import { getDatabase, ref, push, onValue, serverTimestamp, set, update, get, child } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js';
+
+        // Firebase configuration - REPLACE WITH YOUR NEW PROJECT CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbLIzkSDHFveAMynRVHVxa9yiyvBAZ6JI",
+            authDomain: "colx-2381f.firebaseapp.com",
+            databaseURL: "https://colx-2381f-default-rtdb.firebaseio.com",
+            projectId: "colx-2381f",
+            storageBucket: "colx-2381f.firebasestorage.app",
+            messagingSenderId: "823928336295",
+            appId: "1:823928336295:web:ae29ab942e13f5558bd082"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Ask for notification permission on app load
+function requestNotificationPermission() {
+    if ('Notification' in window) {
+        if (Notification.permission === 'default') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    showNotification('You will receive updates as notifications!');
+                }
+            });
+        }
+    }
+}
+requestNotificationPermission();
+
+        // Global variables
+        let currentUser = null;
+        let userProfile = null;
+
+        // Map branch/year to Google Drive links
+        const driveLinks = {
+            "CSE": {
+                "1": "https://drive.google.com/drive/folders/1klDloK1X-DY88e8bAE0bHnHTyIsYv6e8",
+                "2": "https://drive.google.com/drive/folders/1klDloK1X-DY88e8bAE0bHnHTyIsYv6e8",
+                "3": "https://drive.google.com/drive/folders/1klDloK1X-DY88e8bAE0bHnHTyIsYv6e8",
+                "4": "https://drive.google.com/drive/folders/1klDloK1X-DY88e8bAE0bHnHTyIsYv6e8"
+            },
+            "ECE": {
+                "1": "https://drive.google.com/drive/folders/1kkD42m1KGwsNqZcrDL_a0QiwSjsF90Nb?usp=sharing",
+                "2": "https://drive.google.com/drive/folders/1kkD42m1KGwsNqZcrDL_a0QiwSjsF90Nb?usp=sharing",
+                "3": "https://drive.google.com/drive/folders/1kkD42m1KGwsNqZcrDL_a0QiwSjsF90Nb?usp=sharing",
+                "4": "https://drive.google.com/drive/folders/1kkD42m1KGwsNqZcrDL_a0QiwSjsF90Nb?usp=sharing"
+            },
+            "ME": {
+                "1": "https://drive.google.com/drive/folders/142CUlrAyVhGOl0ofMDM8uEgcvth8H2va?usp=sharing",
+                "2": "https://drive.google.com/drive/folders/142CUlrAyVhGOl0ofMDM8uEgcvth8H2va?usp=sharing",
+                "3": "https://drive.google.com/drive/folders/142CUlrAyVhGOl0ofMDM8uEgcvth8H2va?usp=sharing",
+                "4": "https://drive.google.com/drive/folders/142CUlrAyVhGOl0ofMDM8uEgcvth8H2va?usp=sharing"
+            },
+            "EE": {
+                "1": "https://drive.google.com/drive/folders/1TBJTCqw2Bx0VZqs5t_ew_7s3--cnPBie?usp=sharing",
+                "2": "https://drive.google.com/drive/folders/1TBJTCqw2Bx0VZqs5t_ew_7s3--cnPBie?usp=sharing",
+                "3": "https://drive.google.com/drive/folders/1TBJTCqw2Bx0VZqs5t_ew_7s3--cnPBie?usp=sharing",
+                "4": "https://drive.google.com/drive/folders/1TBJTCqw2Bx0VZqs5t_ew_7s3--cnPBie?usp=sharing"
+            },
+            "CE": {
+                "1": "https://drive.google.com/drive/folders/1uV-l26K64ZrlqwJX_yVjEHyfmeqVbsK7?usp=sharing",
+                "2": "https://drive.google.com/drive/folders/1uV-l26K64ZrlqwJX_yVjEHyfmeqVbsK7?usp=sharing",
+                "3": "https://drive.google.com/drive/folders/1uV-l26K64ZrlqwJX_yVjEHyfmeqVbsK7?usp=sharing",
+                "4": "https://drive.google.com/drive/folders/1uV-l26K64ZrlqwJX_yVjEHyfmeqVbsK7?usp=sharing"
+            },
+            "IT": {
+                "1": "https://drive.google.com/drive/folders/16LkbEOoz51kRvSHqOQIcCeuLEVZ1Fknm?usp=sharing",
+                "2": "https://drive.google.com/drive/folders/16LkbEOoz51kRvSHqOQIcCeuLEVZ1Fknm?usp=sharing",
+                "3": "https://drive.google.com/drive/folders/16LkbEOoz51kRvSHqOQIcCeuLEVZ1Fknm?usp=sharing",
+                "4": "https://drive.google.com/drive/folders/16LkbEOoz51kRvSHqOQIcCeuLEVZ1Fknm?usp=sharing"
+            }
+        };
+
+        // Utility functions
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${isError ? 'error' : ''} show`;
+            setTimeout(() => {
+                notification.className = 'notification';
+            }, 3000);
+        }
+
+        function formatDate(timestamp) {
+            return new Date(timestamp).toLocaleDateString() + ' ' + new Date(timestamp).toLocaleTimeString();
+        }
+
+        function showLoading(buttonId, loaderId) {
+            document.getElementById(buttonId).style.display = 'none';
+            document.getElementById(loaderId).style.display = 'inline-block';
+        }
+
+        function hideLoading(buttonId, loaderId) {
+            document.getElementById(buttonId).style.display = 'inline-block';
+            document.getElementById(loaderId).style.display = 'none';
+        }
+
+        // Authentication functions
+        function login(email, password) {
+            showLoading('loginBtnText', 'loginLoader');
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    currentUser = userCredential.user;
+                    loadUserProfile();
+                    showNotification('Login successful!');
+                })
+                .catch((error) => {
+                    showNotification('Login failed: ' + error.message, true);
+                })
+                .finally(() => {
+                    hideLoading('loginBtnText', 'loginLoader');
+                });
+        }
+
+        function signup(email, password, name, branch, year) {
+            if (!name || !branch || !year) {
+                showNotification('Please fill all profile information', true);
+                return;
+            }
+            
+            showLoading('signupBtnText', 'signupLoader');
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    currentUser = userCredential.user;
+                    // Create user profile
+                    const profileData = {
+                        uid: currentUser.uid,
+                        email: currentUser.email,
+                        name: name,
+                        branch: branch,
+                        year: year,
+                        joinDate: serverTimestamp(),
+                        createdAt: serverTimestamp()
+                    };
+                    
+                    return set(ref(database, `users/${currentUser.uid}`), profileData);
+                })
+                .then(() => {
+                    showNotification('Account created successfully!');
+                    loadUserProfile();
+                })
+                .catch((error) => {
+                    showNotification('Signup failed: ' + error.message, true);
+                })
+                .finally(() => {
+                    hideLoading('signupBtnText', 'signupLoader');
+                });
+        }
+
+        function logout() {
+            signOut(auth).then(() => {
+                currentUser = null;
+                userProfile = null;
+                showLoginSection();
+                showNotification('Logged out successfully!');
+            }).catch((error) => {
+                showNotification('Logout failed: ' + error.message, true);
+            });
+        }
+
+        // Profile functions
+        async function loadUserProfile() {
+            if (!currentUser) return;
+            
+            try {
+                const userRef = ref(database, `users/${currentUser.uid}`);
+                const snapshot = await get(userRef);
+                
+                if (snapshot.exists()) {
+                    userProfile = snapshot.val();
+                    showMainApp();
+                } else {
+                    // User doesn't have profile, redirect to profile creation
+                    showProfileCreation();
+                }
+            } catch (error) {
+                console.error('Profile load error:', error);
+                showNotification('Error loading profile. Check your Firebase Realtime DB config or security rules: ' + error.message, true);
+            }
+        }
+
+        function showProfileCreation() {
+            showNotification('Please complete your profile setup', false);
+            showMainApp();
+            showSection('profile');
+        }
+
+        function updateUserProfile() {
+    const name = document.getElementById('profileName').value;
+    const year = document.getElementById('profileYear').value;
+
+    if (!name) {
+        showNotification('Please fill name field', true);
+        return;
+    }
+    if (!year) {
+        showNotification('Please select your academic year', true);
+        return;
+    }
+
+    const updates = {};
+    updates[`users/${currentUser.uid}/name`] = name;
+    updates[`users/${currentUser.uid}/year`] = year;
+    updates[`users/${currentUser.uid}/updatedAt`] = serverTimestamp();
+
+    update(ref(database), updates)
+        .then(() => {
+            userProfile = { ...userProfile, name, year };
+            showNotification('Profile updated successfully!');
+            updateUIWithProfile();
+            updateNotesContent();
+        })
+        .catch((error) => {
+            showNotification('Failed to update profile: ' + error.message, true);
+        });
+}
+
+        function showMainApp() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
+            document.getElementById('bottomNav').style.display = 'flex';
+            
+            if (userProfile) {
+                updateUIWithProfile();
+                showSection('dashboard');
+                loadDashboardData();
+            }
+            
+            // Check for admin privileges
+            const newsUploadForm = document.getElementById('newsUploadForm');
+            const adminEmails = [
+                "admin1@gmail.com",
+                "admin2@gmail.com",
+                "admin3@gmail.com",
+                "admin4@gmail.com"
+            ];
+            const userEmail = currentUser.email.toLowerCase().trim();
+            const isAdmin = adminEmails.map(e => e.toLowerCase().trim()).includes(userEmail);
+            
+            if (newsUploadForm) {
+                if (isAdmin) {
+                    newsUploadForm.classList.remove('hidden');
+                } else {
+                    newsUploadForm.classList.add('hidden');
+                }
+            }
+        }
+
+        function showLoginSection() {
+            document.getElementById('loginSection').style.display = 'flex';
+            document.getElementById('mainApp').style.display = 'none';
+            document.getElementById('bottomNav').style.display = 'none';
+        }
+
+        function updateUIWithProfile() {
+            if (!userProfile) return;
+            
+            document.getElementById('userEmail').textContent = userProfile.email;
+            document.getElementById('userProfile').textContent = `${userProfile.branch} - Year ${userProfile.year}`;
+            
+            // Update profile form
+            document.getElementById('profileName').value = userProfile.name || '';
+            document.getElementById('profileEmail').value = userProfile.email || '';
+            document.getElementById('profileBranch').value = userProfile.branch || '';
+            document.getElementById('profileYear').value = userProfile.year || '';
+            
+            // Update dashboard profile
+            const dashboardProfile = document.getElementById('dashboardProfile');
+            dashboardProfile.innerHTML = `
+                <div><strong>Name:</strong> ${userProfile.name}</div>
+                <div><strong>Branch:</strong> ${userProfile.branch}</div>
+                <div><strong>Year:</strong> ${userProfile.year}</div>
+                <div><strong>Email:</strong> ${userProfile.email}</div>
+            `;
+
+            // Update member since
+            if (userProfile.joinDate) {
+                document.getElementById('memberSince').textContent = new Date(userProfile.joinDate).toLocaleDateString();
+            }
+            
+            // Update suggestion filter display
+            const suggestionFilter = document.getElementById('suggestionFilter');
+            if (suggestionFilter) {
+                suggestionFilter.textContent = `${userProfile.branch} - Year ${userProfile.year}`;
+            }
+            
+            updateNotesContent();
+        }
+
+        function updateNotesContent() {
+            if (!userProfile) return;
+            
+            const notesFilter = document.getElementById('notesFilter');
+            notesFilter.textContent = `${userProfile.branch} - ${userProfile.year} Year`;
+            
+            // Update Drive link
+            const driveLinkElem = document.getElementById('driveLink');
+            if (userProfile.branch && userProfile.year && driveLinks[userProfile.branch] && driveLinks[userProfile.branch][userProfile.year]) {
+                driveLinkElem.href = driveLinks[userProfile.branch][userProfile.year];
+                driveLinkElem.style.display = 'inline-block';
+            } else {
+                driveLinkElem.href = "#";
+                driveLinkElem.style.display = 'none';
+            }
+            
+            loadNotes();
+        }
+
+        // Navigation functions
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('section-hidden');
+            });
+
+            // Show selected section
+            document.getElementById(sectionName + 'Section').classList.remove('section-hidden');
+
+            // Update navigation (top)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelectorAll(`[data-section="${sectionName}"]`).forEach(link => {
+                link.classList.add('active');
+            });
+
+            // Update bottom nav
+            document.querySelectorAll('.bottom-nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.section === sectionName) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Load data for the selected section
+            if (sectionName === 'news') {
+                loadNews();
+            } else if (sectionName === 'suggestions') {
+                loadSuggestions();
+            } else if (sectionName === 'notes') {
+                updateNotesContent();
+            } else if (sectionName === 'dashboard') {
+                loadDashboardData();
+            }
+        }
+
+        // Dashboard functions
+        function loadDashboardData() {
+            if (!currentUser || !userProfile) return;
+
+            // Load user's request count
+            const suggestionsRef = ref(database, 'suggestions');
+            onValue(suggestionsRef, (snapshot) => {
+                const suggestions = snapshot.val();
+                let userRequestsCount = 0;
+                
+                if (suggestions) {
+                    Object.values(suggestions).forEach(suggestion => {
+                        if (suggestion.author === currentUser.email) {
+                            userRequestsCount++;
+                        }
+                    });
+                }
+                
+                document.getElementById('userRequestsCount').textContent = userRequestsCount;
+                document.getElementById('totalRequests').textContent = userRequestsCount;
+            });
+
+            // Load available notes count
+            const notesRef = ref(database, `notes/${userProfile.branch}/${userProfile.year}`);
+            onValue(notesRef, (snapshot) => {
+                const notes = snapshot.val();
+                let notesCount = 0;
+                
+                if (notes) {
+                    notesCount = Object.values(notes).filter(note => note.approved).length;
+                }
+                
+                document.getElementById('availableNotesCount').textContent = notesCount;
+            });
+
+            // Load recent news count
+            const newsRef = ref(database, 'news');
+            onValue(newsRef, (snapshot) => {
+                const news = snapshot.val();
+                let newsCount = 0;
+                
+                if (news) {
+                    const oneWeekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+                    Object.values(news).forEach(newsItem => {
+                        if (newsItem.timestamp > oneWeekAgo) {
+                            if (!newsItem.targetBranch || newsItem.targetBranch === 'ALL' || newsItem.targetBranch === userProfile.branch) {
+                                if (!newsItem.targetYear || newsItem.targetYear === 'ALL' || newsItem.targetYear === userProfile.year) {
+                                    newsCount++;
+                                }
+                            }
+                        }
+                    });
+                }
+                
+                document.getElementById('recentNewsCount').textContent = newsCount;
+            });
+
+            // Load recent activity
+            loadRecentActivity();
+        }
+
+        function loadRecentActivity() {
+            const recentActivity = document.getElementById('recentActivity');
+            recentActivity.innerHTML = `
+                <div class="text-gray-400 text-center">
+                    <i class="fas fa-clock text-2xl mb-2"></i>
+                    <p>Recent activity will appear here</p>
+                </div>
+            `;
+        }
+
+        // News functions
+        // ...inside loadNews()...
+let lastNewsTimestamp = 0; // Place this variable outside the function to persist
+
+function loadNews() {
+    const newsRef = ref(database, 'news');
+    onValue(newsRef, (snapshot) => {
+        const news = snapshot.val();
+        const newsList = document.getElementById('newsList');
+        newsList.innerHTML = '';
+
+        if (news) {
+            const filteredNews = Object.keys(news).filter(key => {
+                const newsItem = news[key];
+                if (!userProfile) return true;
+                const branchMatch = !newsItem.targetBranch || newsItem.targetBranch === 'ALL' || newsItem.targetBranch === userProfile.branch;
+                const yearMatch = !newsItem.targetYear || newsItem.targetYear === 'ALL' || newsItem.targetYear === userProfile.year;
+                return branchMatch && yearMatch;
+            });
+
+            // Find the latest news timestamp
+            let maxTimestamp = lastNewsTimestamp;
+            filteredNews.forEach(key => {
+                const newsItem = news[key];
+                if (newsItem.timestamp && newsItem.timestamp > lastNewsTimestamp) {
+                    // Only notify if permission is granted and not the first load
+                    if (Notification.permission === 'granted' && lastNewsTimestamp !== 0) {
+                        new Notification('New Notice', {
+                            body: newsItem.title,
+                            icon: '/favicon.ico'
+                        });
+                    }
+                    if (newsItem.timestamp > maxTimestamp) maxTimestamp = newsItem.timestamp;
+                }
+            });
+            lastNewsTimestamp = maxTimestamp;
+
+            if (filteredNews.length > 0) {
+                filteredNews.reverse().forEach(key => {
+                    const newsItem = news[key];
+                    const newsElement = createNewsElement(key, newsItem);
+                    newsList.appendChild(newsElement);
+                });
+            } else {
+                newsList.innerHTML = '<p class="text-gray-400 text-center">No news available for your branch and year.</p>';
+            }
+        } else {
+            newsList.innerHTML = '<p class="text-gray-400 text-center">No news available at the moment.</p>';
+        }
+    });
+}
+
+        function createNewsElement(id, newsItem) {
+            const canDelete = currentUser && newsItem.author === currentUser.email;
+            const div = document.createElement('div');
+            div.className = 'cyber-card p-6 hover-glow relative';
+            
+            let targetInfo = '';
+            if (newsItem.targetBranch && newsItem.targetBranch !== 'ALL') {
+                targetInfo += `${newsItem.targetBranch}`;
+            }
+            if (newsItem.targetYear && newsItem.targetYear !== 'ALL') {
+                targetInfo += ` - Year ${newsItem.targetYear}`;
+            }
+            if (!targetInfo) targetInfo = 'All Students';
+            
+            div.innerHTML = `
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--neon-purple);">${newsItem.title}</h3>
+                        <p class="text-sm text-gray-400">By ${newsItem.author} • ${newsItem.timestamp ? formatDate(newsItem.timestamp) : 'Recently'}</p>
+                        <p class="text-xs text-gray-500">Target: ${targetInfo}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="tag">${newsItem.category || 'General'}</span>
+                        ${canDelete ? `<button class="vote-button text-xs px-2 py-1" onclick="deleteNews('${id}')"><i class="fas fa-trash"></i></button>` : ''}
+                    </div>
+                </div>
+                <p class="text-lg">${newsItem.content}</p>
+                ${newsItem.verified ? '<div class="flex items-center mt-4"><i class="fas fa-check-circle text-green-400 mr-2"></i><span class="text-sm text-green-400">Verified</span></div>' : ''}
+            `;
+            return div;
+        }
+
+        window.deleteNews = function(newsId) {
+            if (confirm('Are you sure you want to delete this news?')) {
+                const newsRef = ref(database, `news/${newsId}`);
+                onValue(newsRef, (snapshot) => {
+                    const newsItem = snapshot.val();
+                    if (newsItem && newsItem.author === currentUser.email) {
+                        set(newsRef, null)
+                            .then(() => showNotification('News deleted!'))
+                            .catch((error) => showNotification('Delete failed: ' + error.message, true));
+                    } else {
+                        showNotification('You can only delete your own news.', true);
+                    }
+                }, { onlyOnce: true });
+            }
+        };
+
+        function postNews() {
+            if (!currentUser) {
+                showNotification('You must be logged in to post news.', true);
+                return;
+            }
+            
+            const title = document.getElementById('newsTitle').value.trim();
+            const content = document.getElementById('newsContent').value.trim();
+            const category = document.getElementById('newsCategory').value.trim();
+            const targetBranch = document.getElementById('newsBranch').value;
+            const targetYear = document.getElementById('newsYear').value;
+            
+            if (!title || !content) {
+                showNotification('Please enter both title and content', true);
+                return;
+            }
+            
+            const newsData = {
+                title: title,
+                content: content,
+                author: currentUser.email,
+                timestamp: serverTimestamp(),
+                category: category,
+                targetBranch: targetBranch,
+                targetYear: targetYear,
+                verified: true
+            };
+            
+            push(ref(database, 'news'), newsData)
+                .then(() => {
+                    document.getElementById('newsTitle').value = '';
+                    document.getElementById('newsContent').value = '';
+                    document.getElementById('newsCategory').value = '';
+                    document.getElementById('newsBranch').value = 'ALL';
+                    document.getElementById('newsYear').value = 'ALL';
+                    showNotification('News posted successfully!');
+                })
+                .catch((error) => {
+                    showNotification('Failed to post news: ' + error.message, true);
+                });
+        }
+
+        // Notes functions
+        function loadNotes() {
+            if (!userProfile) return;
+            
+            const notesRef = ref(database, `notes/${userProfile.branch}/${userProfile.year}`);
+            onValue(notesRef, (snapshot) => {
+                const notes = snapshot.val();
+                const notesList = document.getElementById('notesList');
+                notesList.innerHTML = '';
+                
+                if (notes) {
+                    Object.keys(notes).forEach(key => {
+                        const note = notes[key];
+                        if (note.approved) {
+                            const noteElement = createNoteElement(key, note);
+                            notesList.appendChild(noteElement);
+                        }
+                    });
+                } else {
+                    notesList.innerHTML = '<p class="text-gray-400 text-center">No notes available for your branch and year. Check Google Drive or upload some!</p>';
+                }
+            });
+        }
+
+        function createNoteElement(id, note) {
+            const div = document.createElement('div');
+            div.className = 'cyber-card p-4 hover-glow';
+            div.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div class="flex-1">
+                        <h4 class="text-lg font-bold mb-2">${note.title}</h4>
+                        <p class="text-sm text-gray-400 mb-2">${note.subject}</p>
+                        <p class="text-sm mb-3">${note.description}</p>
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>${note.author}</span>
+                            <span><i class="fas fa-calendar mr-1"></i>${note.timestamp ? formatDate(note.timestamp) : 'Recently'}</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        <button class="neon-button px-4 py-2 text-sm" onclick="downloadNote('${id}', '${note.title}')">
+                            <i class="fas fa-download mr-2"></i>Download
+                        </button>
+                        <button class="vote-button" onclick="voteNote('${id}', 'helpful')">
+                            <i class="fas fa-thumbs-up"></i> ${note.helpful || 0}
+                        </button>
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function uploadNote() {
+            if (!userProfile) {
+                showNotification('Please complete your profile first', true);
+                return;
+            }
+            
+            const title = document.getElementById('noteTitle').value.trim();
+            const subject = document.getElementById('noteSubject').value.trim();
+            const description = document.getElementById('noteDescription').value.trim();
+            const file = document.getElementById('noteFile').files[0];
+            
+            if (!title || !subject || !description || !file) {
+                showNotification('Please fill all fields and select a file', true);
+                return;
+            }
+            
+            const noteData = {
+                title: title,
+                subject: subject,
+                description: description,
+                author: currentUser.email,
+                timestamp: serverTimestamp(),
+                approved: false,
+                helpful: 0,
+                fileName: file.name,
+                fileSize: file.size
+            };
+            
+            push(ref(database, `notes/${userProfile.branch}/${userProfile.year}`), noteData)
+                .then(() => {
+                    document.getElementById('uploadModal').classList.add('hidden');
+                    // Reset form
+                    document.getElementById('noteTitle').value = '';
+                    document.getElementById('noteSubject').value = '';
+                    document.getElementById('noteDescription').value = '';
+                    document.getElementById('noteFile').value = '';
+                    showNotification('Note uploaded successfully! Awaiting approval.');
+                })
+                .catch((error) => {
+                    showNotification('Failed to upload note: ' + error.message, true);
+                });
+        }
+
+        window.downloadNote = function(noteId, title) {
+            showNotification(`Downloading "${title}"...`);
+            // In a real app, this would trigger actual file download
+        };
+
+        window.voteNote = function(noteId, voteType) {
+            if (!userProfile) return;
+            
+            const noteRef = ref(database, `notes/${userProfile.branch}/${userProfile.year}/${noteId}/${voteType}`);
+            onValue(noteRef, (snapshot) => {
+                const currentVotes = snapshot.val() || 0;
+                update(ref(database, `notes/${userProfile.branch}/${userProfile.year}/${noteId}`), {
+                    [voteType]: currentVotes + 1
+                });
+            }, { onlyOnce: true });
+        };
+
+        // Suggestions functions
+        function postSuggestion() {
+            if (!currentUser || !userProfile) {
+                showNotification('You must be logged in to submit a suggestion.', true);
+                return;
+            }
+            
+            const title = document.getElementById('suggestionTitle').value.trim();
+            const text = document.getElementById('suggestionText').value.trim();
+            const category = document.getElementById('suggestionCategory').value;
+            
+            if (!title || !text) {
+                showNotification('Please enter both title and description', true);
+                return;
+            }
+            
+            const suggestionData = {
+                title: title,
+                text: text,
+                category: category,
+                author: currentUser.email,
+                authorBranch: userProfile.branch,
+                authorYear: userProfile.year,
+                timestamp: serverTimestamp(),
+                upvotes: 0,
+                status: 'pending'
+            };
+            
+            push(ref(database, 'suggestions'), suggestionData)
+                .then(() => {
+                    document.getElementById('suggestionTitle').value = '';
+                    document.getElementById('suggestionText').value = '';
+                    document.getElementById('suggestionCategory').value = 'general';
+                    showNotification('Request submitted successfully!');
+                })
+                .catch((error) => {
+                    showNotification('Failed to submit request: ' + error.message, true);
+                });
+        }
+
+        function loadSuggestions() {
+            const suggestionsRef = ref(database, 'suggestions');
+            onValue(suggestionsRef, (snapshot) => {
+                const suggestions = snapshot.val();
+                const suggestionsList = document.getElementById('suggestionsList');
+                suggestionsList.innerHTML = '';
+                
+                if (suggestions && userProfile) {
+                    // Filter suggestions to show only those from same branch and year
+                    const filteredSuggestions = Object.keys(suggestions).filter(key => {
+                        const suggestion = suggestions[key];
+                        return suggestion.authorBranch === userProfile.branch && 
+                               suggestion.authorYear === userProfile.year;
+                    });
+
+                    if (filteredSuggestions.length > 0) {
+                        filteredSuggestions.reverse().forEach(key => {
+                            const suggestion = suggestions[key];
+                            const suggestionElement = createSuggestionElement(key, suggestion);
+                            suggestionsList.appendChild(suggestionElement);
+                        });
+                    } else {
+                        suggestionsList.innerHTML = `
+                            <div class="text-center text-gray-400 cyber-card p-8">
+                                <i class="fas fa-comments text-4xl mb-4" style="color: var(--neon-pink);"></i>
+                                <p class="text-lg mb-2">No requests from your branch and year yet.</p>
+                                <p>Be the first to share an idea with your peers!</p>
+                            </div>
+                        `;
+                    }
+                } else {
+                    suggestionsList.innerHTML = `
+                        <div class="text-center text-gray-400 cyber-card p-8">
+                            <i class="fas fa-comments text-4xl mb-4" style="color: var(--neon-pink);"></i>
+                            <p class="text-lg mb-2">No requests yet.</p>
+                            <p>Share your ideas with your peers!</p>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // ...existing code...
+function createSuggestionElement(id, suggestion) {
+    const canDelete = currentUser && suggestion.author === currentUser.email;
+    const userVoted = suggestion.upvoters && currentUser && suggestion.upvoters[currentUser.uid];
+    const div = document.createElement('div');
+    div.className = 'cyber-card p-6 hover-glow relative';
+    div.innerHTML = `
+        <div class="flex justify-between items-start mb-4">
+            <div>
+                <h3 class="text-xl font-bold mb-2" style="color: var(--neon-pink);">${suggestion.title}</h3>
+                <p class="text-sm text-gray-400">By ${suggestion.author} (${suggestion.authorBranch} - Year ${suggestion.authorYear}) • ${suggestion.timestamp ? formatDate(suggestion.timestamp) : 'Recently'}</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="tag">${suggestion.category || 'general'}</span>
+                <span class="tag ${suggestion.status === 'approved' ? 'bg-green-500' : suggestion.status === 'implemented' ? 'bg-blue-500' : 'bg-yellow-500'}">${suggestion.status}</span>
+                ${canDelete ? `<button class="vote-button" style="color:#ff0080;" onclick="deleteSuggestion('${id}')"><i class="fas fa-trash"></i></button>` : ''}
+            </div>
+        </div>
+        <p class="text-lg">${suggestion.text}</p>
+        <div class="flex items-center justify-between mt-4">
+            <button class="vote-button${userVoted ? ' voted' : ''}" onclick="voteSuggestion('${id}', 'upvotes')" ${userVoted ? 'disabled' : ''}>
+                <i class="fas fa-thumbs-up"></i> ${suggestion.upvotes || 0}
+            </button>
+        </div>
+    `;
+    return div;
+}
+// ...existing code...
+
+        window.deleteSuggestion = function(suggestionId) {
+            if (confirm('Are you sure you want to delete this request?')) {
+                const suggestionRef = ref(database, `suggestions/${suggestionId}`);
+                onValue(suggestionRef, (snapshot) => {
+                    const suggestion = snapshot.val();
+                    if (suggestion && suggestion.author === currentUser.email) {
+                        set(suggestionRef, null)
+                            .then(() => showNotification('Request deleted!'))
+                            .catch((error) => showNotification('Delete failed: ' + error.message, true));
+                    } else {
+                        showNotification('You can only delete your own requests.', true);
+                    }
+                }, { onlyOnce: true });
+            }
+        };
+
+       // ...existing code...
+window.voteSuggestion = function(suggestionId, voteType) {
+    if (!currentUser) return;
+
+    const suggestionRef = ref(database, `suggestions/${suggestionId}`);
+    get(suggestionRef).then((snapshot) => {
+        const suggestion = snapshot.val();
+        if (!suggestion) return;
+
+        // Use UID for uniqueness
+        const voterId = currentUser.uid;
+        const upvoters = suggestion.upvoters || {};
+
+        if (upvoters[voterId]) {
+            showNotification('You have already liked this request.', true);
+            return;
+        }
+
+        // Increment upvotes and add user to upvoters
+        const updates = {
+            upvotes: (suggestion.upvotes || 0) + 1,
+        };
+        updates[`upvoters/${voterId}`] = true;
+
+        update(suggestionRef, updates)
+            .then(() => showNotification('Thanks for your feedback!'))
+            .catch((error) => showNotification('Failed to vote: ' + error.message, true));
+    });
+};
+// ...existing code...
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auth state listener
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    currentUser = user;
+                    loadUserProfile();
+                } else {
+                    currentUser = null;
+                    userProfile = null;
+                    showLoginSection();
+                }
+            });
+
+            // Auth form toggles
+            document.getElementById('showSignupBtn').addEventListener('click', () => {
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('signupForm').classList.remove('hidden');
+            });
+
+            document.getElementById('showLoginBtn').addEventListener('click', () => {
+                document.getElementById('signupForm').classList.add('hidden');
+                document.getElementById('loginForm').classList.remove('hidden');
+            });
+
+            // Login/Signup
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                login(email, password);
+            });
+
+            document.getElementById('signupBtn').addEventListener('click', () => {
+                const email = document.getElementById('signupEmail').value;
+                const password = document.getElementById('signupPassword').value;
+                const name = document.getElementById('signupName').value;
+                const branch = document.getElementById('signupBranch').value;
+                const year = document.getElementById('signupYear').value;
+                signup(email, password, name, branch, year);
+            });
+
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+
+            // Navigation (top and bottom)
+            document.querySelectorAll('.nav-link, .bottom-nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.dataset.section;
+                    showSection(section);
+                });
+            });
+
+            // Profile update
+            document.getElementById('updateProfileBtn').addEventListener('click', updateUserProfile);
+
+            // Post Suggestion
+            document.getElementById('postSuggestionBtn').addEventListener('click', postSuggestion);
+
+            // Post News
+            document.getElementById('postNewsBtn').addEventListener('click', postNews);
+
+            // Upload note modal
+            document.getElementById('uploadNoteBtn').addEventListener('click', () => {
+                document.getElementById('uploadModal').classList.remove('hidden');
+            });
+
+            document.getElementById('cancelUpload').addEventListener('click', () => {
+                document.getElementById('uploadModal').classList.add('hidden');
+            });
+
+            document.getElementById('submitNote').addEventListener('click', uploadNote);
+
+            // Enter key support
+            document.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const activeElement = document.activeElement;
+                    if (activeElement.id === 'loginEmail' || activeElement.id === 'loginPassword') {
+                        document.getElementById('loginBtn').click();
+                    } else if (activeElement.id === 'suggestionText') {
+                        document.getElementById('postSuggestionBtn').click();
+                    }
+                }
+            });
+        });
+
+        // Make showSection available globally
+        window.showSection = showSection;
+
+        // Initialize some demo data (run once)
+        window.initializeDemoData = function() {
+            const demoNews = {
+                title: "Welcome to Enhanced ColX!",
+                content: "Your personalized college experience starts here. Explore notes, stay updated with notices, and connect with your peers from your branch and year!",
+                author: "Admin",
+                timestamp: Date.now(),
+                category: "Welcome",
+                targetBranch: "ALL",
+                targetYear: "ALL",
+                verified: true
+            };
+            
+            push(ref(database, 'news'), demoNews);
+        };
+    </script>
+</body>
+</html>
