@@ -4,7 +4,7 @@ COLX is a modern web-based platform designed to connect users, facilitate commun
 
 ## 🚀 Live Demo
 
-**Website:** Add your deployed COLX link here
+**Website:** [https://nsrajput01.github.io/colx/]
 
 ## 📌 Features
 
@@ -12,12 +12,9 @@ COLX is a modern web-based platform designed to connect users, facilitate commun
 * 👤 User profile management
 * 🔎 User search functionality
 * 💬 Real-time communication
-* 🔔 Notification system
-* 🖼️ Image upload and management
 * 📱 Responsive user interface
 * ⚡ Real-time data updates
 * 🎨 Modern and interactive UI
-* ☁️ Cloud-based image storage
 
 ## 🛠️ Technologies Used
 
@@ -32,7 +29,6 @@ COLX is a modern web-based platform designed to connect users, facilitate commun
 
 * Firebase Authentication
 * Firebase Realtime Database
-* Cloudinary
 
 ### Development Tools
 
