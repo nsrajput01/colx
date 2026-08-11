@@ -46,18 +46,6 @@ COLX is a modern web-based platform designed to connect users, facilitate commun
 COLX/
 │
 ├── index.html
-├── css/
-│   └── style.css
-│
-├── js/
-│   └── script.js
-│
-├── assets/
-│   ├── images/
-│   └── icons/
-│
-└── README.md
-```
 
 > The actual structure may vary depending on the current version of the project.
 
