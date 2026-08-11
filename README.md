@@ -46,6 +46,8 @@ COLX is a modern web-based platform designed to connect users, facilitate commun
 COLX/
 │
 ├── index.html
+└── README.md
+```
 
 > The actual structure may vary depending on the current version of the project.
 
