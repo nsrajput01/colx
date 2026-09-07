@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ColX - Enhanced College Student Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --neon-blue: #00f5ff;
@@ -31,7 +34,7 @@
             background: var(--dark-bg);
             color: var(--text-primary);
             overflow-x: hidden;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 40% 40%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
@@ -47,7 +50,7 @@
 
         .cyber-border {
             border: 1px solid var(--neon-blue);
-            background: rgba(27,9,32,255);
+            background: rgba(27, 9, 32, 255);
             box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
         }
 
@@ -57,11 +60,27 @@
         }
 
         @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
         }
 
         .pulse-neon {
@@ -69,8 +88,13 @@
         }
 
         @keyframes pulse-neon {
-            from { box-shadow: 0 0 10px var(--neon-blue); }
-            to { box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); }
+            from {
+                box-shadow: 0 0 10px var(--neon-blue);
+            }
+
+            to {
+                box-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+            }
         }
 
         .hover-glow:hover {
@@ -225,7 +249,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .notification {
@@ -249,7 +275,7 @@
         .notification.error {
             border-color: var(--neon-pink);
             color: var(--neon-pink);
-        } 
+        }
 
         .file-upload {
             position: relative;
@@ -389,35 +415,40 @@
             #bottomNav {
                 display: flex;
             }
-            .bgbtm{
+
+            .bgbtm {
                 background: var(--card-bg);
             }
         }
+
         @media (min-width: 769px) {
-            #bottomNav{
+            #bottomNav {
                 display: none !important;
             }
+
             .bottom-nav-link {
                 color: var(--text-secondary);
                 text-decoration: none;
                 flex: 1;
                 transition: color 0.2s;
             }
+
             .bottom-nav-link.active,
             .bottom-nav-link:hover {
                 color: var(--neon-blue);
             }
-            #bottomNav{
-                display: none;
-            }   
-        }
 
+            #bottomNav {
+                display: none;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Notification Container -->
     <div id="notification" class="notification"></div>
-    
+
     <!-- Login Section -->
     <div id="loginSection" class="min-h-screen flex items-center justify-center px-4">
         <div class="cyber-card p-8 w-full max-w-md">
@@ -426,18 +457,20 @@
                 <p class="text-lg mt-2 text-gray-400">Enhanced College Student Hub</p>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4"></div>
             </div>
-            
+
             <div id="loginForm" class="space-y-6">
                 <div>
                     <label class="block text-sm font-medium mb-2">Email</label>
-                    <input type="email" id="loginEmail" class="cyber-input w-full rounded" placeholder="Enter your email">
+                    <input type="email" id="loginEmail" class="cyber-input w-full rounded"
+                        placeholder="Enter your email">
                 </div>
-                
+
                 <div>
                     <label class="block text-sm font-medium mb-2">Password</label>
-                    <input type="password" id="loginPassword" class="cyber-input w-full rounded" placeholder="Enter your password">
+                    <input type="password" id="loginPassword" class="cyber-input w-full rounded"
+                        placeholder="Enter your password">
                 </div>
-                
+
                 <button id="loginBtn" class="neon-button w-full rounded">
                     <span id="loginBtnText">Login</span>
                     <div id="loginLoader" class="loading hidden ml-2"></div>
@@ -452,17 +485,20 @@
             <div id="signupForm" class="space-y-6 hidden">
                 <div>
                     <label class="block text-sm font-medium mb-2">Full Name</label>
-                    <input type="text" id="signupName" class="cyber-input w-full rounded" placeholder="Enter your full name">
+                    <input type="text" id="signupName" class="cyber-input w-full rounded"
+                        placeholder="Enter your full name">
                 </div>
-                
+
                 <div>
                     <label class="block text-sm font-medium mb-2">Email</label>
-                    <input type="email" id="signupEmail" class="cyber-input w-full rounded" placeholder="Enter your email">
+                    <input type="email" id="signupEmail" class="cyber-input w-full rounded"
+                        placeholder="Enter your email">
                 </div>
-                
+
                 <div>
                     <label class="block text-sm font-medium mb-2">Password</label>
-                    <input type="password" id="signupPassword" class="cyber-input w-full rounded" placeholder="Enter your password">
+                    <input type="password" id="signupPassword" class="cyber-input w-full rounded"
+                        placeholder="Enter your password">
                 </div>
 
                 <div>
@@ -488,8 +524,9 @@
                         <option value="4">4th Year</option>
                     </select>
                 </div>
-                
-                <button id="signupBtn" class="neon-button w-full rounded" style="border-color: var(--neon-purple); color: var(--neon-purple);">
+
+                <button id="signupBtn" class="neon-button w-full rounded"
+                    style="border-color: var(--neon-purple); color: var(--neon-purple);">
                     <span id="signupBtnText">Create Account</span>
                     <div id="signupLoader" class="loading hidden ml-2"></div>
                 </button>
@@ -514,7 +551,7 @@
                         <span id="userProfile" class="profile-badge"></span>
                     </div>
                 </div>
-                
+
                 <nav class="desktop-nav hidden md:flex space-x-8">
                     <a href="#" class="nav-link active" data-section="dashboard">Dashboard</a>
                     <a href="#" class="nav-link" data-section="notes">Notes</a>
@@ -522,11 +559,11 @@
                     <a href="#" class="nav-link" data-section="suggestions">Requests</a>
                     <a href="#" class="nav-link" data-section="profile">Profile</a>
                 </nav>
-                
+
                 <div class="flex items-center space-x-4">
                     <button id="logoutBtn" class="text-red-400 hover:text-red-300 transition-colors">
                         <i class="fas fa-sign-out-alt"></i>
-                    </button>                  
+                    </button>
                 </div>
             </div>
         </header>
@@ -582,7 +619,9 @@
                         <button class="neon-button w-full text-sm py-2" onclick="showSection('notes')">
                             Access My Notes
                         </button>
-                        <button class="neon-button w-full text-sm py-2" style="border-color: var(--neon-purple); color: var(--neon-purple);" onclick="showSection('suggestions')">
+                        <button class="neon-button w-full text-sm py-2"
+                            style="border-color: var(--neon-purple); color: var(--neon-purple);"
+                            onclick="showSection('suggestions')">
                             Submit Request
                         </button>
                     </div>
@@ -608,7 +647,8 @@
                     <h3 class="text-xl font-bold mb-4">Post News</h3>
                     <div class="space-y-4">
                         <input type="text" id="newsTitle" class="cyber-input w-full rounded" placeholder="Notice title">
-                        <input type="text" id="newsCategory" class="cyber-input w-full rounded" placeholder="Category (optional)">
+                        <input type="text" id="newsCategory" class="cyber-input w-full rounded"
+                            placeholder="Category (optional)">
                         <select id="newsBranch" class="cyber-select w-full rounded">
                             <option value="ALL">All Branches</option>
                             <option value="CSE">Computer Science</option>
@@ -625,7 +665,8 @@
                             <option value="3">3rd Year</option>
                             <option value="4">4th Year</option>
                         </select>
-                        <textarea id="newsContent" class="cyber-input w-full h-24 rounded" placeholder="Notice content"></textarea>
+                        <textarea id="newsContent" class="cyber-input w-full h-24 rounded"
+                            placeholder="Notice content"></textarea>
                         <button id="postNewsBtn" class="neon-button">Post</button>
                     </div>
                 </div>
@@ -641,7 +682,7 @@
                 <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-green);">Study Notes</h2>
                 <p class="text-gray-400 mb-6">Access study materials for your branch and year</p>
             </div>
-            
+
             <!-- Auto-loaded content based on user profile -->
             <div id="notesContent">
                 <div class="flex justify-between items-center mb-6">
@@ -653,25 +694,41 @@
                         <a id="driveLink" href="#" target="_blank" class="neon-button" style="text-decoration:none;">
                             <i class="fab fa-google-drive mr-2"></i>Google Drive
                         </a>
-                        <button id="uploadNoteBtn" class="neon-button" style="border-color: var(--neon-purple); color: var(--neon-purple);">
+                        <button id="uploadNoteBtn" class="neon-button"
+                            style="border-color: var(--neon-purple); color: var(--neon-purple);">
                             <i class="fas fa-upload mr-2"></i>Upload Note
                         </button>
                     </div>
                 </div>
-                
+
                 <div id="notesList" class="space-y-4">
                     <!-- Notes will be populated here -->
                 </div>
             </div>
-            
+
             <!-- Upload Note Modal -->
-            <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div id="uploadModal"
+                class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
                 <div class="cyber-card p-6 w-full max-w-md mx-4">
                     <h3 class="text-xl font-bold mb-4">Upload Note</h3>
                     <div class="space-y-4">
                         <input type="text" id="noteTitle" class="cyber-input w-full rounded" placeholder="Note title">
-                        <input type="text" id="noteSubject" class="cyber-input w-full rounded" placeholder="Subject">
-                        <textarea id="noteDescription" class="cyber-input w-full h-24 rounded" placeholder="Description"></textarea>
+                        <select id="noteSubject" class="cyber-input w-full rounded" required>
+    <option value="">Select Subject</option>
+    <option value="Mathematics">Mathematics</option>
+    <option value="Physics">Physics</option>
+    <option value="Chemistry">Chemistry</option>
+    <option value="Data Structures">Data Structures</option>
+    <option value="DBMS">DBMS</option>
+    <option value="Operating System">Operating System</option>
+    <option value="Computer Networks">Computer Networks</option>
+    <option value="Java">Java</option>
+    <option value="Python">Python</option>
+    <option value="AI/ML">AI/ML</option>
+    <option value="Other">Other</option>
+</select>
+                        <textarea id="noteDescription" class="cyber-input w-full h-24 rounded"
+                            placeholder="Description"></textarea>
                         <div class="file-upload">
                             <input type="file" id="noteFile" accept=".pdf,.doc,.docx,.txt">
                             <label for="noteFile" class="file-upload-label">Choose File</label>
@@ -690,7 +747,7 @@
             <div class="mb-8">
                 <h2 class="text-3xl font-bold orbitron mb-4" style="color: var(--neon-pink);">Request Box</h2>
                 <p class="text-gray-400 mb-6">Share your request with your branch and year peers</p>
-                
+
                 <!-- Filter Info -->
                 <div class="cyber-card p-4 mb-6" style="border-color: var(--neon-pink);">
                     <div class="flex items-center justify-center">
@@ -699,11 +756,12 @@
                         <span id="suggestionFilter" class="font-bold ml-2" style="color: var(--neon-pink);"></span>
                     </div>
                 </div>
-                
+
                 <div class="cyber-card p-6">
                     <h3 class="text-xl font-bold mb-4">Submit a Request</h3>
                     <div class="space-y-4">
-                        <input type="text" id="suggestionTitle" class="cyber-input w-full rounded" placeholder="Request title">
+                        <input type="text" id="suggestionTitle" class="cyber-input w-full rounded"
+                            placeholder="Request title">
                         <select id="suggestionCategory" class="cyber-select w-full rounded">
                             <option value="general">General</option>
                             <option value="academic">Academic</option>
@@ -711,12 +769,13 @@
                             <option value="events">Events</option>
                             <option value="other">Other</option>
                         </select>
-                        <textarea id="suggestionText" class="cyber-input w-full h-32 rounded" placeholder="Describe your request..."></textarea>
+                        <textarea id="suggestionText" class="cyber-input w-full h-32 rounded"
+                            placeholder="Describe your request..."></textarea>
                         <button id="postSuggestionBtn" class="neon-button">Submit</button>
                     </div>
                 </div>
             </div>
-            
+
             <div id="suggestionsList" class="space-y-6">
                 <!-- Suggestions will be populated here -->
             </div>
@@ -743,7 +802,8 @@
                             <input type="email" id="profileEmail" class="cyber-input w-full rounded" readonly>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-2">Branch <span class="text-xs text-gray-500">(Cannot be changed)</span></label>
+                            <label class="block text-sm font-medium mb-2">Branch <span
+                                    class="text-xs text-gray-500">(Cannot be changed)</span></label>
                             <select id="profileBranch" class="cyber-select w-full rounded profile-locked" disabled>
                                 <option value="CSE">Computer Science Engineering</option>
                                 <option value="ECE">Electronics & Communication</option>
@@ -754,8 +814,9 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium mb-2">Academic Year <span class="text-xs text-gray-500"></span></label>
-                            <select id="profileYear" class="cyber-select w-full rounded profile-locked" >
+                            <label class="block text-sm font-medium mb-2">Academic Year <span
+                                    class="text-xs text-gray-500"></span></label>
+                            <select id="profileYear" class="cyber-select w-full rounded profile-locked">
                                 <option value="1">1st Year</option>
                                 <option value="2">2nd Year</option>
                                 <option value="3">3rd Year</option>
@@ -766,10 +827,11 @@
                     </div>
                 </div>
                 <div class="mt-8 text-center">
-            <a href="https://nsrajput0.github.io/Colx/" target="_blank" class="neon-button" style="border-color: var(--neon-green); color: var(--neon-green);">
-                Visit Our Website
-            </a>
-        </div>
+                    <a href="https://nsrajput0.github.io/Colx/" target="_blank" class="neon-button"
+                        style="border-color: var(--neon-green); color: var(--neon-green);">
+                        Visit Our Website
+                    </a>
+                </div>
 
                 <!-- Account Statistics -->
                 <div class="cyber-card p-6">
@@ -793,17 +855,19 @@
                         </div>
                     </div>
                 </div>
-             
+
             </div>
             <div class="mt-8 text-center">
-            <a href="https://nsrajput0.github.io/Colx/" target="_blank" class="neon-button" style="border-color: var(--neon-green); color: var(--neon-green);">
-                Visit Our Website
-            </a>
-        </div>
+                <a href="https://nsrajput0.github.io/Colx/" target="_blank" class="neon-button"
+                    style="border-color: var(--neon-green); color: var(--neon-green);">
+                    Visit Our Website
+                </a>
+            </div>
         </section>
     </div>
 
-    <nav id="bottomNav" class="fixed bottom-0 left-0 w-full bgbtm bg-opacity-90 border-t border-gray-800 flex justify-around items-center py-2 z-50 md:hidden">
+    <nav id="bottomNav"
+        class="fixed bottom-0 left-0 w-full bgbtm bg-opacity-90 border-t border-gray-800 flex justify-around items-center py-2 z-50 md:hidden">
         <a href="#" class="bottom-nav-link flex flex-col items-center active" data-section="dashboard">
             <i class="fas fa-home text-xl"></i>
             <span class="text-xs mt-1">Home</span>
@@ -827,6 +891,7 @@
     </nav>
 
     <!-- Firebase SDKs -->
+     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module">
         // Import Firebase modules
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js';
@@ -849,19 +914,30 @@
         const auth = getAuth(app);
         const database = getDatabase(app);
 
+        // supabase configuration
+        const SUPABASE_URL = "https://beqcxnyunhinkjklijwf.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_k2UHBTy3jM2E0MTHOF9V5w_Hv8UKRSE";
+
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+
         // Ask for notification permission on app load
-function requestNotificationPermission() {
-    if ('Notification' in window) {
-        if (Notification.permission === 'default') {
-            Notification.requestPermission().then(permission => {
-                if (permission === 'granted') {
-                    showNotification('You will receive updates as notifications!');
+        function requestNotificationPermission() {
+            if ('Notification' in window) {
+                if (Notification.permission === 'default') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            showNotification('You will receive updates as notifications!');
+                        }
+                    });
                 }
-            });
+            }
         }
-    }
-}
-requestNotificationPermission();
+        requestNotificationPermission();
 
         // Global variables
         let currentUser = null;
@@ -953,7 +1029,7 @@ requestNotificationPermission();
                 showNotification('Please fill all profile information', true);
                 return;
             }
-            
+
             showLoading('signupBtnText', 'signupLoader');
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
@@ -968,7 +1044,7 @@ requestNotificationPermission();
                         joinDate: serverTimestamp(),
                         createdAt: serverTimestamp()
                     };
-                    
+
                     return set(ref(database, `users/${currentUser.uid}`), profileData);
                 })
                 .then(() => {
@@ -997,11 +1073,11 @@ requestNotificationPermission();
         // Profile functions
         async function loadUserProfile() {
             if (!currentUser) return;
-            
+
             try {
                 const userRef = ref(database, `users/${currentUser.uid}`);
                 const snapshot = await get(userRef);
-                
+
                 if (snapshot.exists()) {
                     userProfile = snapshot.val();
                     showMainApp();
@@ -1022,46 +1098,46 @@ requestNotificationPermission();
         }
 
         function updateUserProfile() {
-    const name = document.getElementById('profileName').value;
-    const year = document.getElementById('profileYear').value;
+            const name = document.getElementById('profileName').value;
+            const year = document.getElementById('profileYear').value;
 
-    if (!name) {
-        showNotification('Please fill name field', true);
-        return;
-    }
-    if (!year) {
-        showNotification('Please select your academic year', true);
-        return;
-    }
+            if (!name) {
+                showNotification('Please fill name field', true);
+                return;
+            }
+            if (!year) {
+                showNotification('Please select your academic year', true);
+                return;
+            }
 
-    const updates = {};
-    updates[`users/${currentUser.uid}/name`] = name;
-    updates[`users/${currentUser.uid}/year`] = year;
-    updates[`users/${currentUser.uid}/updatedAt`] = serverTimestamp();
+            const updates = {};
+            updates[`users/${currentUser.uid}/name`] = name;
+            updates[`users/${currentUser.uid}/year`] = year;
+            updates[`users/${currentUser.uid}/updatedAt`] = serverTimestamp();
 
-    update(ref(database), updates)
-        .then(() => {
-            userProfile = { ...userProfile, name, year };
-            showNotification('Profile updated successfully!');
-            updateUIWithProfile();
-            updateNotesContent();
-        })
-        .catch((error) => {
-            showNotification('Failed to update profile: ' + error.message, true);
-        });
-}
+            update(ref(database), updates)
+                .then(() => {
+                    userProfile = { ...userProfile, name, year };
+                    showNotification('Profile updated successfully!');
+                    updateUIWithProfile();
+                    updateNotesContent();
+                })
+                .catch((error) => {
+                    showNotification('Failed to update profile: ' + error.message, true);
+                });
+        }
 
         function showMainApp() {
             document.getElementById('loginSection').style.display = 'none';
             document.getElementById('mainApp').style.display = 'block';
             document.getElementById('bottomNav').style.display = 'flex';
-            
+
             if (userProfile) {
                 updateUIWithProfile();
                 showSection('dashboard');
                 loadDashboardData();
             }
-            
+
             // Check for admin privileges
             const newsUploadForm = document.getElementById('newsUploadForm');
             const adminEmails = [
@@ -1072,7 +1148,7 @@ requestNotificationPermission();
             ];
             const userEmail = currentUser.email.toLowerCase().trim();
             const isAdmin = adminEmails.map(e => e.toLowerCase().trim()).includes(userEmail);
-            
+
             if (newsUploadForm) {
                 if (isAdmin) {
                     newsUploadForm.classList.remove('hidden');
@@ -1090,16 +1166,16 @@ requestNotificationPermission();
 
         function updateUIWithProfile() {
             if (!userProfile) return;
-            
+
             document.getElementById('userEmail').textContent = userProfile.email;
             document.getElementById('userProfile').textContent = `${userProfile.branch} - Year ${userProfile.year}`;
-            
+
             // Update profile form
             document.getElementById('profileName').value = userProfile.name || '';
             document.getElementById('profileEmail').value = userProfile.email || '';
             document.getElementById('profileBranch').value = userProfile.branch || '';
             document.getElementById('profileYear').value = userProfile.year || '';
-            
+
             // Update dashboard profile
             const dashboardProfile = document.getElementById('dashboardProfile');
             dashboardProfile.innerHTML = `
@@ -1113,22 +1189,22 @@ requestNotificationPermission();
             if (userProfile.joinDate) {
                 document.getElementById('memberSince').textContent = new Date(userProfile.joinDate).toLocaleDateString();
             }
-            
+
             // Update suggestion filter display
             const suggestionFilter = document.getElementById('suggestionFilter');
             if (suggestionFilter) {
                 suggestionFilter.textContent = `${userProfile.branch} - Year ${userProfile.year}`;
             }
-            
+
             updateNotesContent();
         }
 
         function updateNotesContent() {
             if (!userProfile) return;
-            
+
             const notesFilter = document.getElementById('notesFilter');
             notesFilter.textContent = `${userProfile.branch} - ${userProfile.year} Year`;
-            
+
             // Update Drive link
             const driveLinkElem = document.getElementById('driveLink');
             if (userProfile.branch && userProfile.year && driveLinks[userProfile.branch] && driveLinks[userProfile.branch][userProfile.year]) {
@@ -1138,7 +1214,7 @@ requestNotificationPermission();
                 driveLinkElem.href = "#";
                 driveLinkElem.style.display = 'none';
             }
-            
+
             loadNotes();
         }
 
@@ -1189,7 +1265,7 @@ requestNotificationPermission();
             onValue(suggestionsRef, (snapshot) => {
                 const suggestions = snapshot.val();
                 let userRequestsCount = 0;
-                
+
                 if (suggestions) {
                     Object.values(suggestions).forEach(suggestion => {
                         if (suggestion.author === currentUser.email) {
@@ -1197,7 +1273,7 @@ requestNotificationPermission();
                         }
                     });
                 }
-                
+
                 document.getElementById('userRequestsCount').textContent = userRequestsCount;
                 document.getElementById('totalRequests').textContent = userRequestsCount;
             });
@@ -1207,11 +1283,11 @@ requestNotificationPermission();
             onValue(notesRef, (snapshot) => {
                 const notes = snapshot.val();
                 let notesCount = 0;
-                
+
                 if (notes) {
                     notesCount = Object.values(notes).filter(note => note.approved).length;
                 }
-                
+
                 document.getElementById('availableNotesCount').textContent = notesCount;
             });
 
@@ -1220,7 +1296,7 @@ requestNotificationPermission();
             onValue(newsRef, (snapshot) => {
                 const news = snapshot.val();
                 let newsCount = 0;
-                
+
                 if (news) {
                     const oneWeekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
                     Object.values(news).forEach(newsItem => {
@@ -1233,7 +1309,7 @@ requestNotificationPermission();
                         }
                     });
                 }
-                
+
                 document.getElementById('recentNewsCount').textContent = newsCount;
             });
 
@@ -1253,61 +1329,61 @@ requestNotificationPermission();
 
         // News functions
         // ...inside loadNews()...
-let lastNewsTimestamp = 0; // Place this variable outside the function to persist
+        let lastNewsTimestamp = 0; // Place this variable outside the function to persist
 
-function loadNews() {
-    const newsRef = ref(database, 'news');
-    onValue(newsRef, (snapshot) => {
-        const news = snapshot.val();
-        const newsList = document.getElementById('newsList');
-        newsList.innerHTML = '';
+        function loadNews() {
+            const newsRef = ref(database, 'news');
+            onValue(newsRef, (snapshot) => {
+                const news = snapshot.val();
+                const newsList = document.getElementById('newsList');
+                newsList.innerHTML = '';
 
-        if (news) {
-            const filteredNews = Object.keys(news).filter(key => {
-                const newsItem = news[key];
-                if (!userProfile) return true;
-                const branchMatch = !newsItem.targetBranch || newsItem.targetBranch === 'ALL' || newsItem.targetBranch === userProfile.branch;
-                const yearMatch = !newsItem.targetYear || newsItem.targetYear === 'ALL' || newsItem.targetYear === userProfile.year;
-                return branchMatch && yearMatch;
-            });
+                if (news) {
+                    const filteredNews = Object.keys(news).filter(key => {
+                        const newsItem = news[key];
+                        if (!userProfile) return true;
+                        const branchMatch = !newsItem.targetBranch || newsItem.targetBranch === 'ALL' || newsItem.targetBranch === userProfile.branch;
+                        const yearMatch = !newsItem.targetYear || newsItem.targetYear === 'ALL' || newsItem.targetYear === userProfile.year;
+                        return branchMatch && yearMatch;
+                    });
 
-            // Find the latest news timestamp
-            let maxTimestamp = lastNewsTimestamp;
-            filteredNews.forEach(key => {
-                const newsItem = news[key];
-                if (newsItem.timestamp && newsItem.timestamp > lastNewsTimestamp) {
-                    // Only notify if permission is granted and not the first load
-                    if (Notification.permission === 'granted' && lastNewsTimestamp !== 0) {
-                        new Notification('New Notice', {
-                            body: newsItem.title,
-                            icon: '/favicon.ico'
+                    // Find the latest news timestamp
+                    let maxTimestamp = lastNewsTimestamp;
+                    filteredNews.forEach(key => {
+                        const newsItem = news[key];
+                        if (newsItem.timestamp && newsItem.timestamp > lastNewsTimestamp) {
+                            // Only notify if permission is granted and not the first load
+                            if (Notification.permission === 'granted' && lastNewsTimestamp !== 0) {
+                                new Notification('New Notice', {
+                                    body: newsItem.title,
+                                    icon: '/favicon.ico'
+                                });
+                            }
+                            if (newsItem.timestamp > maxTimestamp) maxTimestamp = newsItem.timestamp;
+                        }
+                    });
+                    lastNewsTimestamp = maxTimestamp;
+
+                    if (filteredNews.length > 0) {
+                        filteredNews.reverse().forEach(key => {
+                            const newsItem = news[key];
+                            const newsElement = createNewsElement(key, newsItem);
+                            newsList.appendChild(newsElement);
                         });
+                    } else {
+                        newsList.innerHTML = '<p class="text-gray-400 text-center">No news available for your branch and year.</p>';
                     }
-                    if (newsItem.timestamp > maxTimestamp) maxTimestamp = newsItem.timestamp;
+                } else {
+                    newsList.innerHTML = '<p class="text-gray-400 text-center">No news available at the moment.</p>';
                 }
             });
-            lastNewsTimestamp = maxTimestamp;
-
-            if (filteredNews.length > 0) {
-                filteredNews.reverse().forEach(key => {
-                    const newsItem = news[key];
-                    const newsElement = createNewsElement(key, newsItem);
-                    newsList.appendChild(newsElement);
-                });
-            } else {
-                newsList.innerHTML = '<p class="text-gray-400 text-center">No news available for your branch and year.</p>';
-            }
-        } else {
-            newsList.innerHTML = '<p class="text-gray-400 text-center">No news available at the moment.</p>';
         }
-    });
-}
 
         function createNewsElement(id, newsItem) {
             const canDelete = currentUser && newsItem.author === currentUser.email;
             const div = document.createElement('div');
             div.className = 'cyber-card p-6 hover-glow relative';
-            
+
             let targetInfo = '';
             if (newsItem.targetBranch && newsItem.targetBranch !== 'ALL') {
                 targetInfo += `${newsItem.targetBranch}`;
@@ -1316,7 +1392,7 @@ function loadNews() {
                 targetInfo += ` - Year ${newsItem.targetYear}`;
             }
             if (!targetInfo) targetInfo = 'All Students';
-            
+
             div.innerHTML = `
                 <div class="flex justify-between items-start mb-4">
                     <div>
@@ -1335,7 +1411,7 @@ function loadNews() {
             return div;
         }
 
-        window.deleteNews = function(newsId) {
+        window.deleteNews = function (newsId) {
             if (confirm('Are you sure you want to delete this news?')) {
                 const newsRef = ref(database, `news/${newsId}`);
                 onValue(newsRef, (snapshot) => {
@@ -1356,18 +1432,18 @@ function loadNews() {
                 showNotification('You must be logged in to post news.', true);
                 return;
             }
-            
+
             const title = document.getElementById('newsTitle').value.trim();
             const content = document.getElementById('newsContent').value.trim();
             const category = document.getElementById('newsCategory').value.trim();
             const targetBranch = document.getElementById('newsBranch').value;
             const targetYear = document.getElementById('newsYear').value;
-            
+
             if (!title || !content) {
                 showNotification('Please enter both title and content', true);
                 return;
             }
-            
+
             const newsData = {
                 title: title,
                 content: content,
@@ -1378,7 +1454,7 @@ function loadNews() {
                 targetYear: targetYear,
                 verified: true
             };
-            
+
             push(ref(database, 'news'), newsData)
                 .then(() => {
                     document.getElementById('newsTitle').value = '';
@@ -1396,25 +1472,91 @@ function loadNews() {
         // Notes functions
         function loadNotes() {
             if (!userProfile) return;
-            
+
             const notesRef = ref(database, `notes/${userProfile.branch}/${userProfile.year}`);
             onValue(notesRef, (snapshot) => {
                 const notes = snapshot.val();
                 const notesList = document.getElementById('notesList');
                 notesList.innerHTML = '';
-                
-                if (notes) {
-                    Object.keys(notes).forEach(key => {
-                        const note = notes[key];
-                        if (note.approved) {
-                            const noteElement = createNoteElement(key, note);
-                            notesList.appendChild(noteElement);
-                        }
-                    });
-                } else {
-                    notesList.innerHTML = '<p class="text-gray-400 text-center">No notes available for your branch and year. Check Google Drive or upload some!</p>';
+
+                if (!notes) {
+                    notesList.innerHTML = '<p class="text-gray-400 text-center">No notes available for your branch and year. Upload some notes to get started!</p>';
+                    return;
                 }
+
+                // Group notes by subject
+                const subjects = {};
+
+                Object.keys(notes).forEach(key => {
+                    const note = notes[key];
+
+                    // Notes are uploaded without admin approval.
+                    if (note.approved !== false) {
+                        const subject = (note.subject || 'Other').trim() || 'Other';
+
+                        if (!subjects[subject]) {
+                            subjects[subject] = [];
+                        }
+
+                        subjects[subject].push({
+                            id: key,
+                            ...note
+                        });
+                    }
+                });
+
+                const subjectNames = Object.keys(subjects).sort((a, b) =>
+                    a.localeCompare(b)
+                );
+
+                if (subjectNames.length === 0) {
+                    notesList.innerHTML = '<p class="text-gray-400 text-center">No notes available for your branch and year.</p>';
+                    return;
+                }
+
+                // Display each subject as its own category
+                subjectNames.forEach((subject, index) => {
+                    const section = document.createElement('div');
+                    section.className = 'mb-8';
+
+                    section.innerHTML = `
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center"
+                                 style="background: rgba(0,245,255,0.1); border: 1px solid rgba(0,245,255,0.35);">
+                                <i class="fas fa-book text-cyan-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">${escapeHtml(subject)}</h3>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider">
+                                    ${subjects[subject].length} note${subjects[subject].length === 1 ? '' : 's'}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="subject-${index}">
+                        </div>
+                    `;
+
+                    notesList.appendChild(section);
+
+                    const subjectContainer = section.querySelector(`#subject-${index}`);
+
+                    subjects[subject].forEach(note => {
+                        subjectContainer.appendChild(
+                            createNoteElement(note.id, note)
+                        );
+                    });
+                });
             });
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
         }
 
         function createNoteElement(id, note) {
@@ -1432,7 +1574,7 @@ function loadNews() {
                         </div>
                     </div>
                     <div class="flex flex-col space-y-2">
-                        <button class="neon-button px-4 py-2 text-sm" onclick="downloadNote('${id}', '${note.title}')">
+                        <button class="neon-button px-4 py-2 text-sm" onclick="downloadNote('${id}', '${note.title}', '${note.fileUrl || ''}')">
                             <i class="fas fa-download mr-2"></i>Download
                         </button>
                         <button class="vote-button" onclick="voteNote('${id}', 'helpful')">
@@ -1444,57 +1586,116 @@ function loadNews() {
             return div;
         }
 
-        function uploadNote() {
-            if (!userProfile) {
-                showNotification('Please complete your profile first', true);
-                return;
-            }
-            
-            const title = document.getElementById('noteTitle').value.trim();
-            const subject = document.getElementById('noteSubject').value.trim();
-            const description = document.getElementById('noteDescription').value.trim();
-            const file = document.getElementById('noteFile').files[0];
-            
-            if (!title || !subject || !description || !file) {
-                showNotification('Please fill all fields and select a file', true);
-                return;
-            }
-            
-            const noteData = {
-                title: title,
-                subject: subject,
-                description: description,
-                author: currentUser.email,
-                timestamp: serverTimestamp(),
-                approved: false,
-                helpful: 0,
-                fileName: file.name,
-                fileSize: file.size
-            };
-            
-            push(ref(database, `notes/${userProfile.branch}/${userProfile.year}`), noteData)
-                .then(() => {
-                    document.getElementById('uploadModal').classList.add('hidden');
-                    // Reset form
-                    document.getElementById('noteTitle').value = '';
-                    document.getElementById('noteSubject').value = '';
-                    document.getElementById('noteDescription').value = '';
-                    document.getElementById('noteFile').value = '';
-                    showNotification('Note uploaded successfully! Awaiting approval.');
-                })
-                .catch((error) => {
-                    showNotification('Failed to upload note: ' + error.message, true);
+       async function uploadNote() {
+    if (!userProfile) {
+        showNotification('Please complete your profile first', true);
+        return;
+    }
+
+    const title = document.getElementById('noteTitle').value.trim();
+    const subject = document.getElementById('noteSubject').value.trim();
+    const description = document.getElementById('noteDescription').value.trim();
+    const file = document.getElementById('noteFile').files[0];
+
+    if (!title || !subject || !description || !file) {
+        showNotification('Please fill all fields and select a file', true);
+        return;
+    }
+
+    // Maximum file size: 50 MB
+    if (file.size > 50 * 1024 * 1024) {
+        showNotification('File size must be less than 50 MB', true);
+        return;
+    }
+
+    try {
+        showNotification('Uploading file...');
+
+        // Make filename safe
+        const safeFileName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+
+        // Storage path
+        const filePath =
+            `notes/${userProfile.branch}/${userProfile.year}/${Date.now()}_${safeFileName}`;
+
+        // Upload file to Supabase Storage
+        const { data: storageData, error: storageError } =
+            await supabaseClient
+                .storage
+                .from('colx-files')
+                .upload(filePath, file, {
+                    cacheControl: '3600',
+                    upsert: false,
+                    contentType: file.type || 'application/octet-stream'
                 });
+
+        if (storageError) {
+            throw storageError;
         }
 
-        window.downloadNote = function(noteId, title) {
-            showNotification(`Downloading "${title}"...`);
-            // In a real app, this would trigger actual file download
+        // Get public URL
+        const { data: publicUrlData } =
+            supabaseClient
+                .storage
+                .from('colx-files')
+                .getPublicUrl(filePath);
+
+        const fileUrl = publicUrlData.publicUrl;
+
+        // Save note information in Firebase
+        const noteData = {
+            title: title,
+            subject: subject,
+            description: description,
+            author: currentUser.email,
+            timestamp: serverTimestamp(),
+            approved: true,
+            helpful: 0,
+
+            // File information
+            fileName: file.name,
+            fileSize: file.size,
+            fileType: file.type,
+            filePath: filePath,
+            fileUrl: fileUrl
         };
 
-        window.voteNote = function(noteId, voteType) {
+        await push(
+            ref(database, `notes/${userProfile.branch}/${userProfile.year}`),
+            noteData
+        );
+
+        // Close modal
+        document.getElementById('uploadModal').classList.add('hidden');
+
+        // Reset form
+        document.getElementById('noteTitle').value = '';
+        document.getElementById('noteSubject').value = '';
+        document.getElementById('noteDescription').value = '';
+        document.getElementById('noteFile').value = '';
+
+        showNotification('File uploaded successfully!');
+
+    } catch (error) {
+        console.error('Upload error:', error);
+        showNotification('Failed to upload file: ' + error.message, true);
+    }
+}
+
+      window.downloadNote = function (noteId, title, fileUrl) {
+    if (!fileUrl) {
+        showNotification('File is not available', true);
+        return;
+    }
+
+    showNotification(`Opening "${title}"...`);
+
+    window.open(fileUrl, '_blank');
+};
+
+        window.voteNote = function (noteId, voteType) {
             if (!userProfile) return;
-            
+
             const noteRef = ref(database, `notes/${userProfile.branch}/${userProfile.year}/${noteId}/${voteType}`);
             onValue(noteRef, (snapshot) => {
                 const currentVotes = snapshot.val() || 0;
@@ -1510,16 +1711,16 @@ function loadNews() {
                 showNotification('You must be logged in to submit a suggestion.', true);
                 return;
             }
-            
+
             const title = document.getElementById('suggestionTitle').value.trim();
             const text = document.getElementById('suggestionText').value.trim();
             const category = document.getElementById('suggestionCategory').value;
-            
+
             if (!title || !text) {
                 showNotification('Please enter both title and description', true);
                 return;
             }
-            
+
             const suggestionData = {
                 title: title,
                 text: text,
@@ -1531,7 +1732,7 @@ function loadNews() {
                 upvotes: 0,
                 status: 'pending'
             };
-            
+
             push(ref(database, 'suggestions'), suggestionData)
                 .then(() => {
                     document.getElementById('suggestionTitle').value = '';
@@ -1550,13 +1751,13 @@ function loadNews() {
                 const suggestions = snapshot.val();
                 const suggestionsList = document.getElementById('suggestionsList');
                 suggestionsList.innerHTML = '';
-                
+
                 if (suggestions && userProfile) {
                     // Filter suggestions to show only those from same branch and year
                     const filteredSuggestions = Object.keys(suggestions).filter(key => {
                         const suggestion = suggestions[key];
-                        return suggestion.authorBranch === userProfile.branch && 
-                               suggestion.authorYear === userProfile.year;
+                        return suggestion.authorBranch === userProfile.branch &&
+                            suggestion.authorYear === userProfile.year;
                     });
 
                     if (filteredSuggestions.length > 0) {
@@ -1587,12 +1788,12 @@ function loadNews() {
         }
 
         // ...existing code...
-function createSuggestionElement(id, suggestion) {
-    const canDelete = currentUser && suggestion.author === currentUser.email;
-    const userVoted = suggestion.upvoters && currentUser && suggestion.upvoters[currentUser.uid];
-    const div = document.createElement('div');
-    div.className = 'cyber-card p-6 hover-glow relative';
-    div.innerHTML = `
+        function createSuggestionElement(id, suggestion) {
+            const canDelete = currentUser && suggestion.author === currentUser.email;
+            const userVoted = suggestion.upvoters && currentUser && suggestion.upvoters[currentUser.uid];
+            const div = document.createElement('div');
+            div.className = 'cyber-card p-6 hover-glow relative';
+            div.innerHTML = `
         <div class="flex justify-between items-start mb-4">
             <div>
                 <h3 class="text-xl font-bold mb-2" style="color: var(--neon-pink);">${suggestion.title}</h3>
@@ -1611,11 +1812,11 @@ function createSuggestionElement(id, suggestion) {
             </button>
         </div>
     `;
-    return div;
-}
-// ...existing code...
+            return div;
+        }
+        // ...existing code...
 
-        window.deleteSuggestion = function(suggestionId) {
+        window.deleteSuggestion = function (suggestionId) {
             if (confirm('Are you sure you want to delete this request?')) {
                 const suggestionRef = ref(database, `suggestions/${suggestionId}`);
                 onValue(suggestionRef, (snapshot) => {
@@ -1631,39 +1832,39 @@ function createSuggestionElement(id, suggestion) {
             }
         };
 
-       // ...existing code...
-window.voteSuggestion = function(suggestionId, voteType) {
-    if (!currentUser) return;
+        // ...existing code...
+        window.voteSuggestion = function (suggestionId, voteType) {
+            if (!currentUser) return;
 
-    const suggestionRef = ref(database, `suggestions/${suggestionId}`);
-    get(suggestionRef).then((snapshot) => {
-        const suggestion = snapshot.val();
-        if (!suggestion) return;
+            const suggestionRef = ref(database, `suggestions/${suggestionId}`);
+            get(suggestionRef).then((snapshot) => {
+                const suggestion = snapshot.val();
+                if (!suggestion) return;
 
-        // Use UID for uniqueness
-        const voterId = currentUser.uid;
-        const upvoters = suggestion.upvoters || {};
+                // Use UID for uniqueness
+                const voterId = currentUser.uid;
+                const upvoters = suggestion.upvoters || {};
 
-        if (upvoters[voterId]) {
-            showNotification('You have already liked this request.', true);
-            return;
-        }
+                if (upvoters[voterId]) {
+                    showNotification('You have already liked this request.', true);
+                    return;
+                }
 
-        // Increment upvotes and add user to upvoters
-        const updates = {
-            upvotes: (suggestion.upvotes || 0) + 1,
+                // Increment upvotes and add user to upvoters
+                const updates = {
+                    upvotes: (suggestion.upvotes || 0) + 1,
+                };
+                updates[`upvoters/${voterId}`] = true;
+
+                update(suggestionRef, updates)
+                    .then(() => showNotification('Thanks for your feedback!'))
+                    .catch((error) => showNotification('Failed to vote: ' + error.message, true));
+            });
         };
-        updates[`upvoters/${voterId}`] = true;
-
-        update(suggestionRef, updates)
-            .then(() => showNotification('Thanks for your feedback!'))
-            .catch((error) => showNotification('Failed to vote: ' + error.message, true));
-    });
-};
-// ...existing code...
+        // ...existing code...
 
         // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Auth state listener
             onAuthStateChanged(auth, (user) => {
                 if (user) {
@@ -1752,7 +1953,7 @@ window.voteSuggestion = function(suggestionId, voteType) {
         window.showSection = showSection;
 
         // Initialize some demo data (run once)
-        window.initializeDemoData = function() {
+        window.initializeDemoData = function () {
             const demoNews = {
                 title: "Welcome to Enhanced ColX!",
                 content: "Your personalized college experience starts here. Explore notes, stay updated with notices, and connect with your peers from your branch and year!",
@@ -1763,9 +1964,10 @@ window.voteSuggestion = function(suggestionId, voteType) {
                 targetYear: "ALL",
                 verified: true
             };
-            
+
             push(ref(database, 'news'), demoNews);
         };
     </script>
 </body>
+
 </html>
